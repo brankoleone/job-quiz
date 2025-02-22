@@ -14,8 +14,27 @@ export default function Home() {
     numChoices: 4,
   });
 
-  const startQuiz = () => {
-    router.push('/quiz');
+  const startQuiz = async () => {
+    try {
+      const response = await fetch('/api/questions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          numQuestions: quizConfig.numQuestions,
+          numChoices: quizConfig.numChoices,
+        }),
+      });
+
+      if (response.ok) {
+        router.push('/quiz');
+      } else {
+        console.error('Failed to fetch questions');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   return (

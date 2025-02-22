@@ -80,7 +80,7 @@ const devLevels: Record<
 
 const devLevelsArray = Object.entries(devLevels).map(([title, details], index) => {
   const skills = details.skills.join(', ').replace(/, ([^,]*)$/, ' and $1');
-  return `${index + 1}. ${title} (${details.experience}): ${details.description} Skills include ${skills}. Responsibilities include ${details.responsabilities}\n`;
+  return `${index + 1}. ${title} (${details.experience}): ${details.description} Skills include ${skills}. Responsibilities include ${details.responsabilities}`;
 });
 
 export const devLevelsListing = devLevelsArray.join('\n');
