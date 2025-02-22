@@ -1,0 +1,196 @@
+{
+  "questions": [
+    {
+      "question": "What is the correct way to link a CSS file to an HTML document?",
+      "answers": [
+        "<link rel='stylesheet' type='text/css' href='styles.css'>",
+        "<link src='styles.css' rel='stylesheet'>",
+        "<stylesheet link='styles.css'>",
+        "<style file='styles.css'>"
+      ],
+      "correctAnswer": 0,
+      "explanation": "The <link> tag is used to link an external CSS file to an HTML document. The correct syntax is '<link rel='stylesheet' type='text/css' href='styles.css'>'. The 'rel' attribute specifies the relationship, and 'href' specifies the path to the stylesheet.",
+      "tags": ["html", "css"]
+    },
+    {
+      "question": "In JavaScript, what is the output of the following code: console.log(typeof null)?",
+      "answers": ["'null'", "'object'", "'undefined'", "'function'"],
+      "correctAnswer": 1,
+      "explanation": "In JavaScript, the 'typeof' operator returns 'object' for the 'null' value. This is an acknowledged error in JavaScript's design.",
+      "tags": ["javascript", "basics"]
+    },
+    {
+      "question": "Which tag is used to create a hyperlink in HTML?",
+      "answers": ["<a>", "<link>", "<href>", "<hyperlink>"],
+      "correctAnswer": 0,
+      "explanation": "The <a> (anchor) tag is used to create hyperlinks in HTML. The 'href' attribute specifies the URL of the page the link goes to.",
+      "tags": ["html", "links"]
+    },
+    {
+      "question": "What is the purpose of the 'display' property in CSS?",
+      "answers": [
+        "To set the font size of text",
+        "To handle how an element is displayed on the page",
+        "To change the color of an element",
+        "To hide the element without removing it from the DOM"
+      ],
+      "correctAnswer": 1,
+      "explanation": "The 'display' property in CSS specifies how an element is displayed in the document. It can be set to values like 'block', 'inline', 'flex', etc., to control the layout.",
+      "tags": ["css", "layout"]
+    },
+    {
+      "question": "What is the purpose of a closing tag in HTML?",
+      "answers": [
+        "To open an HTML element",
+        "To close an HTML element",
+        "To add attributes to an element",
+        "To style the element"
+      ],
+      "correctAnswer": 1,
+      "explanation": "HTML elements typically use a start tag (opening tag) and an end tag (closing tag) with content in between. The closing tag marks the end of the element.",
+      "tags": ["html", "elements"]
+    },
+    {
+      "question": "Which HTTP status code indicates that the server cannot find the requested resource?",
+      "answers": ["200", "301", "404", "500"],
+      "correctAnswer": 2,
+      "explanation": "The HTTP status code '404' means 'Not Found', indicating that the server can't find the requested resource.",
+      "tags": ["http", "web"]
+    },
+    {
+      "question": "Which of the following are correct ways to declare a variable in JavaScript? (Select all that apply)",
+      "answers": ["var name = 'John';", "int age = 25;", "let age = 25;", "const gender = 'Male';"],
+      "correctAnswer": [0, 2, 3],
+      "explanation": "'var', 'let', and 'const' are used in JavaScript to declare variables. 'int' is not a valid keyword in JavaScript.",
+      "tags": ["javascript", "variables"]
+    },
+    {
+      "question": "What does the '===' operator do in JavaScript?",
+      "answers": [
+        "Compares two values ignoring their types",
+        "Compares two values and their types",
+        "Assigns a value to a variable",
+        "Performs arithmetic operations"
+      ],
+      "correctAnswer": 1,
+      "explanation": "The '===' operator compares both the values and the types of two variables. It's known as the strict equality operator.",
+      "tags": ["javascript", "operators"]
+    },
+    {
+      "question": "Which CSS property is used to change the text color of an element?",
+      "answers": ["color", "background-color", "font-color", "text-style"],
+      "correctAnswer": 0,
+      "explanation": "The 'color' property in CSS is used to change the color of text. The 'background-color' is for changing the background color.",
+      "tags": ["css", "styles"]
+    },
+    {
+      "question": "In TypeScript, what is the purpose of interfaces?",
+      "answers": [
+        "To create a new data type",
+        "To define a contract that an object or class must follow",
+        "To define private class members",
+        "To handle events"
+      ],
+      "correctAnswer": 1,
+      "explanation": "Interfaces in TypeScript define a contract that an object or class must comply with. They are not an actual part of the output JavaScript code but help in defining object shapes.",
+      "tags": ["typescript", "interfaces"]
+    },
+    {
+      "question": "What is the primary role of the <head> section in an HTML document?",
+      "answers": [
+        "To define where the HTML document begins",
+        "To contain metadata and links to scripts and stylesheets",
+        "To display content on the webpage",
+        "To handle user inputs"
+      ],
+      "correctAnswer": 1,
+      "explanation": "The <head> section is where metadata, links to CSS and JavaScript files, and the page title are defined. It prepares the page's setup before content rendering.",
+      "tags": ["html", "document"]
+    },
+    {
+      "question": "Which of the following methods is used to add an event listener to an HTML element in JavaScript?",
+      "answers": [".setEventListener()", ".attachEvent()", ".addEventListener()", ".bindEvent()"],
+      "correctAnswer": 2,
+      "explanation": "The '.addEventListener()' method is used to attach an event handler to an HTML element for modern browsers. 'attachEvent()' is deprecated.",
+      "tags": ["javascript", "events"]
+    },
+    {
+      "question": "How do you comment out a single line in CSS?",
+      "answers": [
+        "// this is a comment",
+        "# this is a comment",
+        "/* this is a comment */",
+        "<!-- this is a comment -->"
+      ],
+      "correctAnswer": 2,
+      "explanation": "CSS supports comments delimited by '/*' to start and '*/' to end the comment. Single-line comments are written the same way.",
+      "tags": ["css", "comments"]
+    },
+    {
+      "question": "Which of the following is not a valid way to incorporate JavaScript into an HTML page?",
+      "answers": [
+        "<script src='file.js'></script>",
+        "<script></script>",
+        "<js></js>",
+        "<script type='text/javascript'></script>"
+      ],
+      "correctAnswer": 2,
+      "explanation": "<js></js> is not a valid HTML tag for including JavaScript. The <script> tag is the proper tag to use.",
+      "tags": ["javascript", "html"]
+    },
+    {
+      "question": "What JavaScript method is used to convert a JSON string into an object?",
+      "answers": ["JSON.parse()", "JSON.stringify()", "JSON.convert()", "JSON.objectify()"],
+      "correctAnswer": 0,
+      "explanation": "The 'JSON.parse()' method parses a JSON string and constructs the JavaScript value or object described by the string.",
+      "tags": ["javascript", "json"]
+    },
+    {
+      "question": "How would you select an element with the class name 'example' in CSS?",
+      "answers": ["#example", ".example", "example", "&example"],
+      "correctAnswer": 1,
+      "explanation": "In CSS, the '.' selector is used to select elements by their class attribute. '.example' targets elements with the class 'example'.",
+      "tags": ["css", "selectors"]
+    },
+    {
+      "question": "When using the box model in CSS, what is the correct order of box properties from the inside out?",
+      "answers": [
+        "Border, Margin, Padding, Content",
+        "Content, Padding, Border, Margin",
+        "Padding, Content, Border, Margin",
+        "Content, Border, Padding, Margin"
+      ],
+      "correctAnswer": 1,
+      "explanation": "In the CSS box model, the structure from the innermost to the outermost is: Content, Padding, Border, and Margin.",
+      "tags": ["css", "box-model"]
+    },
+    {
+      "question": "What tag would best suit displaying tabular data in HTML?",
+      "answers": ["<table>", "<tab>", "<grid>", "<datatable>"],
+      "correctAnswer": 0,
+      "explanation": "The <table> tag is the standard tag for displaying tabular data in HTML. It allows for structured data presentation using related tags like <tr>, <td>, and <th>.",
+      "tags": ["html", "table"]
+    },
+    {
+      "question": "What will 'console.log(2 + \"2\")' output in JavaScript?",
+      "answers": ["22", "4", "NaN", "undefined"],
+      "correctAnswer": 0,
+      "explanation": "JavaScript will convert the number 2 to a string and concatenate, not add, resulting in the string '22'.",
+      "tags": ["javascript", "type-coercion"]
+    },
+    {
+      "question": "How can you make a list in HTML with bullets?",
+      "answers": ["<ul>", "<ol>", "<list>", "<bl>"],
+      "correctAnswer": 0,
+      "explanation": "The <ul> tag creates an unordered list with bullet points. It's distinct from an ordered list, which uses <ol> and numbers.",
+      "tags": ["html", "lists"]
+    },
+    {
+      "question": "What is the default display property of a <div> element in CSS?",
+      "answers": ["inline", "block", "inline-block", "flex"],
+      "correctAnswer": 1,
+      "explanation": "By default, the <div> element is a block-level element, occupying the full width available and creating a line break before and after it.",
+      "tags": ["css", "display"]
+    }
+  ]
+}
