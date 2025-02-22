@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-type QuizStoreType = {
+type QuizConfig = {
   title: string;
   focus: string;
   numQuestions: number;
@@ -8,16 +8,16 @@ type QuizStoreType = {
 };
 
 interface QuizStore {
-  store: QuizStoreType;
-  setStore: (store: QuizStoreType) => void;
+  config: QuizConfig;
+  setConfig: (config: QuizConfig) => void;
 }
 
 export const useQuizStore = create<QuizStore>((set) => ({
-  store: {
+  config: {
     title: 'Technical Interview Quiz',
     focus: 'Frontend Development',
     numQuestions: 20,
     numChoices: 4,
   },
-  setStore: (store) => set({ store }),
+  setConfig: (config) => set({ config }),
 }));

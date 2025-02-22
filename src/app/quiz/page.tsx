@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
 
 export default function QuizPage() {
   // const router = useRouter();
-  const { store } = useQuizStore();
+  const { config } = useQuizStore();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [questions, setQuestions] = useState<Question[]>([]);
@@ -25,8 +25,8 @@ export default function QuizPage() {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            numQuestions: store.numQuestions,
-            numChoices: store.numChoices,
+            numQuestions: config.numQuestions,
+            numChoices: config.numChoices,
           }),
         });
 
@@ -44,7 +44,7 @@ export default function QuizPage() {
     };
 
     fetchQuestions();
-  }, [store.numQuestions, store.numChoices]);
+  }, [config.numQuestions, config.numChoices]);
 
   const handleAnswer = (index: number, choice: string) => {
     console.log('Choice:', index, choice);
