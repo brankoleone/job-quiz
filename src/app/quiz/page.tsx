@@ -15,6 +15,8 @@ export default function QuizPage() {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [submitted, setSubmitted] = useState(false);
+  const [results, setResults] = useState<Record<number, boolean>>({});
 
   useEffect(() => {
     const fetchQuestions = async () => {
@@ -47,7 +49,11 @@ export default function QuizPage() {
   }, [config.numQuestions, config.numChoices]);
 
   const handleAnswer = (index: number, choice: string) => {
-    console.log('Choice:', index, choice);
+    if (submitted) return;
+    setResults({
+      ...results,
+      [currentQuestion]: questions[currentQuestion]?.correctAnswer === index,
+    });
     setAnswers({ ...answers, [currentQuestion]: choice });
   };
 
@@ -61,9 +67,25 @@ export default function QuizPage() {
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
-      console.log('Answers:', answers);
+      setSubmitted(true);
+      // console.log('Answers:', answers);
       // router.push('/results');
     }
+  };
+
+  const getScore = () => {
+    const correctAnswers = Object.values(results).filter((result) => result).length;
+    return `${correctAnswers} / ${config.numQuestions}`;
+  };
+
+  const getSelectedBorderColor = (choice: string, index: number) => {
+    if (answers[currentQuestion] === choice) {
+      if (!submitted) return 'border-yellow-400';
+      return questions[currentQuestion]?.correctAnswer === index
+        ? 'border-green-400'
+        : 'border-red-400';
+    }
+    return 'border-gray-600';
   };
 
   if (isLoading) {
@@ -86,7 +108,7 @@ export default function QuizPage() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white p-6">
+    <div className="flex flex-col items-center justify-start min-h-screen bg-gray-900 p-6">
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -99,7 +121,7 @@ export default function QuizPage() {
         {questions[currentQuestion]?.answers.map((choice, index) => (
           <label
             key={`${currentQuestion}-${choice}`}
-            className={`block w-full px-6 py-4 bg-gray-800 hover:bg-gray-900 border ${answers[currentQuestion] === choice ? 'border-yellow-400' : 'border-gray-600'}  rounded-md cursor-pointer`}
+            className={`block w-full px-6 py-4 bg-gray-800 hover:bg-gray-900 border rounded-md cursor-pointer ${getSelectedBorderColor(choice, index)}`}
           >
             <input
               type="radio"
@@ -113,13 +135,27 @@ export default function QuizPage() {
           </label>
         ))}
       </div>
+      <div className={`mt-6 max-w-500 ${!submitted ? 'hidden' : ''}`}>
+        <p className="text-lg mt-2 min-h-24">
+          {questions[currentQuestion]?.explanation
+            ? questions[currentQuestion]?.explanation
+            : 'No explanation provided'}
+        </p>
+      </div>
       <div>
         <Button className={`mt-6 mr-4 ${!currentQuestion ? 'hidden' : ''}`} onClick={prevQuestion}>
           Prev
         </Button>
-        <Button className="mt-6" onClick={nextQuestion} disabled={!answers[currentQuestion]}>
+        <Button
+          className={`mt-6 ${currentQuestion === questions.length - 1 ? (submitted ? 'hidden' : 'bg-green-500 hover:bg-green-600') : ''}`}
+          onClick={nextQuestion}
+          disabled={!answers[currentQuestion]}
+        >
           {currentQuestion < questions.length - 1 ? 'Next' : 'Submit'}
         </Button>
+      </div>
+      <div className={`mt-6 ${!submitted ? 'hidden' : ''}`}>
+        <p className="text-lg mt-2">Score: {getScore()}</p>
       </div>
     </div>
   );
