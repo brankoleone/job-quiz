@@ -75,17 +75,16 @@ export default function QuizPage() {
 
   const getScore = () => {
     const correctAnswers = Object.values(results).filter((result) => result).length;
-    return `${correctAnswers} / ${config.numQuestions}`;
+    return `${correctAnswers} / ${questions.length}`;
   };
 
   const getSelectedBorderColor = (choice: string, index: number) => {
+    const isCorrect = questions[currentQuestion]?.correctAnswer === index;
     if (answers[currentQuestion] === choice) {
       if (!submitted) return 'border-yellow-400';
-      return questions[currentQuestion]?.correctAnswer === index
-        ? 'border-green-400'
-        : 'border-red-400';
+      return isCorrect ? 'border-green-400' : 'border-red-400';
     }
-    return 'border-gray-600';
+    return isCorrect && submitted ? 'border-sky-600' : 'border-gray-600';
   };
 
   if (isLoading) {
@@ -143,11 +142,22 @@ export default function QuizPage() {
         </p>
       </div>
       <div>
-        <Button className={`mt-6 mr-4 ${!currentQuestion ? 'hidden' : ''}`} onClick={prevQuestion}>
+        <Button
+          variant="secondary"
+          className={`mt-6 mr-4 ${!currentQuestion ? 'hidden' : ''}`}
+          onClick={prevQuestion}
+        >
           Prev
         </Button>
         <Button
-          className={`mt-6 ${currentQuestion === questions.length - 1 ? (submitted ? 'hidden' : 'bg-green-500 hover:bg-green-600') : ''}`}
+          variant={
+            currentQuestion === questions.length - 1
+              ? 'success'
+              : !submitted
+                ? 'primary'
+                : 'secondary'
+          }
+          className={`mt-6 ${currentQuestion === questions.length - 1 && submitted ? 'hidden' : ''}`}
           onClick={nextQuestion}
           disabled={!answers[currentQuestion]}
         >
